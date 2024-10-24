@@ -1,19 +1,27 @@
 ## Get started (Expo)
 
-1. Install/Update dependencies
+1.1. Install dependencies
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-   ```bash
-   npm update
-   ```
+1.2. Update dependencies
+
+```bash
+npm update
+```
 
 2. Start the app
 
    ```bash
     npx expo start
+   ```
+
+3. Update build
+
+   ```bash
+    eas build --platform android --profile development
    ```
 
 ## Learn more
