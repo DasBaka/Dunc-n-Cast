@@ -1,18 +1,27 @@
-import { Image, Platform, StyleSheet } from 'react-native';
+import { useNavigation } from 'expo-router';
+import { Platform, StyleSheet } from 'react-native';
 
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { Text, View } from 'tamagui';
+import { CirclePlus } from '@tamagui/lucide-icons';
+import { useEffect } from 'react';
+import { Button, Text, View } from 'tamagui';
 
-export default function HomeScreen() {
+export default function LibraryView() {
+	const navigation = useNavigation();
+
+	useEffect(() => {
+		navigation.setOptions({
+			headerShown: true,
+			headerRight: () => (
+				<Button
+					icon={CirclePlus}
+					circular
+					chromeless="all"></Button>
+			),
+		});
+	}, [navigation]);
+
 	return (
-		<ParallaxScrollView
-			headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-			headerImage={
-				<Image
-					source={require('@/assets/images/partial-react-logo.png')}
-					style={styles.reactLogo}
-				/>
-			}>
+		<View>
 			<View style={styles.titleContainer}>
 				<Text>Welcome!</Text>
 			</View>
@@ -34,7 +43,7 @@ export default function HomeScreen() {
 					<Text>app-example</Text>.
 				</Text>
 			</View>
-		</ParallaxScrollView>
+		</View>
 	);
 }
 

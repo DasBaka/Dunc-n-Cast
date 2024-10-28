@@ -31,8 +31,8 @@ eas build --platform android --profile development
 ### Installed libraries
 
 - Framework: [Expo] (https://expo.dev) -> Default-Template
-- Icons: [Ionicons] (https://ionic.io/ionicons) (default of Expo)
 - UI: [Tamagui] (https://tamagui.dev/)
+- Icons: [Lucide] (https://lucide.dev/) (**Needs to be the same Ver. as Tamagui**)
 - Animations: [Moti] (https://moti.fyi/)
 - State management: [Zustand] (https://github.com/pmndrs/zustand)
 - Database: [Firebase] (https://firebase.google.com/) ([Expo integration] (https://docs.expo.dev/guides/using-firebase/))
