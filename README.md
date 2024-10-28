@@ -14,19 +14,15 @@ npm update
 
 2. Start the app
 
-   ```bash
-    npx expo start
-   ```
+```bash
+npx expo start
+```
 
 3. Update build
 
-   ```bash
-    eas build --platform android --profile development
-   ```
-
-## Learn more
-
-[Expo documentation](https://docs.expo.dev/)
+```bash
+eas build --platform android --profile development
+```
 
 ---
 
@@ -34,11 +30,13 @@ npm update
 
 ### Installed libraries
 
-- Framework: Expo -> Default-Template
-- UI: Tamagui
-- Animations: Moti
-- State management: Zustand
-- Fetch: Tanstack Query
-- RSS/ATOM parser: rss-to-json
+- Framework: [Expo] (https://expo.dev) -> Default-Template
+- Icons: [Ionicons] (https://ionic.io/ionicons) (default of Expo)
+- UI: [Tamagui] (https://tamagui.dev/)
+- Animations: [Moti] (https://moti.fyi/)
+- State management: [Zustand] (https://github.com/pmndrs/zustand)
+- Database: [Firebase] (https://firebase.google.com/) ([Expo integration] (https://docs.expo.dev/guides/using-firebase/))
+- Fetch: [Tanstack Query] (https://tanstack.com/query/latest)
+- RSS/ATOM parser: [rss-to-json] (https://www.npmjs.com/package/rss-to-json)
 
 ### Additionally installed Components
