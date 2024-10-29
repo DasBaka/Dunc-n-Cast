@@ -1,22 +1,16 @@
 import { useNavigation } from 'expo-router';
 import { Platform, StyleSheet } from 'react-native';
 
-import { CirclePlus } from '@tamagui/lucide-icons';
+import DialogComponent from '@/components/dialog/DialogComponent';
 import { useEffect } from 'react';
-import { Button, Text, View } from 'tamagui';
+import { Text, View } from 'tamagui';
 
 export default function LibraryView() {
 	const navigation = useNavigation();
-
 	useEffect(() => {
 		navigation.setOptions({
 			headerShown: true,
-			headerRight: () => (
-				<Button
-					icon={CirclePlus}
-					circular
-					chromeless="all"></Button>
-			),
+			headerRight: () => <DialogComponent />,
 		});
 	}, [navigation]);
 

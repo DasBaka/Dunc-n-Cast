@@ -5,13 +5,14 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { LogBox } from 'react-native';
-import { TamaguiProvider } from 'tamagui';
+import { PortalProvider, TamaguiProvider } from 'tamagui';
 
 import 'react-native-gesture-handler';
 import 'react-native-reanimated';
 
 import { tamaguiConfig } from '../tamagui.config';
 
+// ignore unnecessary warning... https://docs.swmansion.com/react-native-reanimated/docs/guides/troubleshooting/#reduced-motion-setting-is-enabled-on-this-device
 LogBox.ignoreLogs(['[Reanimated] Reduced motion setting is enabled on this device.']);
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -41,17 +42,20 @@ export default function RootLayout() {
 			<ThemeProvider
 				value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
 				children={
-					<Stack>
-						<Stack.Screen
-							name="(tabs)"
-							options={{ headerShown: false }}
-						/>
-						{/* <Stack.Screen
+					<PortalProvider shouldAddRootHost>
+						<Stack>
+							<Stack.Screen
+								name="(tabs)"
+								options={{ headerShown: false }}
+							/>
+							{/* <Stack.Screen
 						name="modal"
 						options={{ presentation: 'modal' }}
-					/> */}
-					</Stack>
-				}></ThemeProvider>
+						/> */}
+						</Stack>
+					</PortalProvider>
+				}
+			/>
 		</TamaguiProvider>
 	);
 }
