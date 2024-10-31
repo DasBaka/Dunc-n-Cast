@@ -1,6 +1,8 @@
-import DialogTrigger from '@/components/dialog/DialogTrigger';
-import { CirclePlus, X } from '@tamagui/lucide-icons';
-import { Button, Dialog, Unspaced, XStack } from 'tamagui';
+import DialogContent, { DialogContentProps } from './DialogContent';
+import DialogTrigger from './close/DialogTrigger';
+
+import { CirclePlus } from '@tamagui/lucide-icons';
+import { Button, Dialog, GetProps } from 'tamagui';
 
 // key values for overlay
 const overlay = (
@@ -13,60 +15,19 @@ const overlay = (
 	/>
 );
 
-export default function DialogComponent() {
+interface DialogProps {
+	content: React.JSX.Element;
+	trigger: GetProps<typeof Button>['icon'];
+}
+
+export default function DialogComponent(prop: DialogProps) {
 	return (
 		<Dialog modal>
-			<DialogTrigger icon={CirclePlus} />
-
+			{/* dialog is only triggerable by icons atm!!! */}
+			<DialogTrigger icon={CirclePlus}></DialogTrigger>
 			<Dialog.Portal>
 				{overlay}
-
-				<Dialog.Content
-					bordered
-					elevate
-					key="content"
-					animateOnly={['transform', 'opacity']}
-					animation={[
-						'quicker',
-						{
-							opacity: {
-								overshootClamping: true,
-							},
-						},
-					]}
-					enterStyle={{ x: 0, y: -20, opacity: 0, scale: 0.9 }}
-					exitStyle={{ x: 0, y: 10, opacity: 0, scale: 0.95 }}
-					gap="$4">
-					<Dialog.Title>Edit profile</Dialog.Title>
-					<Dialog.Description>Make changes to your profile here. Click save when you're done.</Dialog.Description>
-
-					<XStack
-						alignSelf="flex-end"
-						gap="$4">
-						<Dialog.Close
-							displayWhenAdapted
-							asChild>
-							<Button
-								theme="active"
-								aria-label="Close">
-								Save changes
-							</Button>
-						</Dialog.Close>
-					</XStack>
-
-					<Unspaced>
-						<Dialog.Close asChild>
-							<Button
-								position="absolute"
-								top="$3"
-								right="$3"
-								size="$2"
-								circular
-								icon={X}
-							/>
-						</Dialog.Close>
-					</Unspaced>
-				</Dialog.Content>
+				{prop.content}
 			</Dialog.Portal>
 		</Dialog>
 	);

@@ -1,16 +1,30 @@
-import { useNavigation } from 'expo-router';
-import { Platform, StyleSheet } from 'react-native';
-
 import DialogComponent from '@/components/dialog/DialogComponent';
+import DialogContent from '@/components/dialog/DialogContent';
+import { CirclePlus } from '@tamagui/lucide-icons';
+import { useNavigation } from 'expo-router';
 import { useEffect } from 'react';
+import { Platform, StyleSheet } from 'react-native';
 import { Text, View } from 'tamagui';
+
+const dialogContent = (
+	<DialogContent
+		title="rest"
+		description="tesdt"
+		closingText="Add Feed"
+	/>
+);
 
 export default function LibraryView() {
 	const navigation = useNavigation();
 	useEffect(() => {
 		navigation.setOptions({
 			headerShown: true,
-			headerRight: () => <DialogComponent />,
+			headerRight: () => (
+				<DialogComponent
+					content={dialogContent}
+					trigger={CirclePlus}
+				/>
+			),
 		});
 	}, [navigation]);
 
